@@ -1,0 +1,964 @@
+(gdb) info float
+fpscr          0x10	16
+s0             0.216038808	(raw 0x3e5d3947)
+s1             1	(raw 0x3f800000)
+s2             0.03125	(raw 0x3d000000)
+s3             0.03515625	(raw 0x3d100000)
+s4             7	(raw 0x40e00000)
+s5             1.03515625	(raw 0x3f848000)
+s6             32	(raw 0x42000000)
+s7             0.0301886797	(raw 0x3cf74e40)
+s8             4	(raw 0x40800000)
+s9             0	(raw 0x00000000)
+s10            0	(raw 0x00000000)
+s11            0	(raw 0x00000000)
+s12            0	(raw 0x00000000)
+s13            0	(raw 0x00000000)
+s14            0	(raw 0x00000000)
+s15            0	(raw 0x00000000)
+s16            0	(raw 0x00000000)
+s17            0	(raw 0x00000000)
+s18            0	(raw 0x00000000)
+s19            0	(raw 0x00000000)
+s20            0	(raw 0x00000000)
+s21            0	(raw 0x00000000)
+---Type <return> to continue, or q <return> to quit---
+s22            0	(raw 0x00000000)
+s23            0	(raw 0x00000000)
+s24            0	(raw 0x00000000)
+s25            0	(raw 0x00000000)
+s26            0	(raw 0x00000000)
+s27            0	(raw 0x00000000)
+s28            0	(raw 0x00000000)
+s29            0	(raw 0x00000000)
+s30            0	(raw 0x00000000)
+s31            0	(raw 0x00000000)
+(gdb) step
+40		vdiv.f32 s3, s4, s6  @ float x = (float)i/dt 
+(gdb) step
+41		vmul.f32 s3, s3, s3  @ x = x * x
+(gdb) step
+42		vadd.f32 s5, s1, s3  @ down = 1.0 + x * x
+(gdb) step
+43		vdiv.f32 s7, s2, s5  @ all = delta/down
+(gdb) step
+44		vadd.f32 s0, s0, s7
+(gdb) step
+45		vadd.f32 s4, s4, s1
+(gdb) step
+46		subs r6, #1  @i--
+(gdb) step
+47		bge .loop
+(gdb) step
+40		vdiv.f32 s3, s4, s6  @ float x = (float)i/dt 
+(gdb) step
+41		vmul.f32 s3, s3, s3  @ x = x * x
+(gdb) step
+42		vadd.f32 s5, s1, s3  @ down = 1.0 + x * x
+(gdb) step
+43		vdiv.f32 s7, s2, s5  @ all = delta/down
+(gdb) step
+44		vadd.f32 s0, s0, s7
+(gdb) step
+45		vadd.f32 s4, s4, s1
+(gdb) step
+46		subs r6, #1  @i--
+(gdb) step
+47		bge .loop
+(gdb) step
+40		vdiv.f32 s3, s4, s6  @ float x = (float)i/dt 
+(gdb) step
+41		vmul.f32 s3, s3, s3  @ x = x * x
+(gdb) step
+42		vadd.f32 s5, s1, s3  @ down = 1.0 + x * x
+(gdb) step
+43		vdiv.f32 s7, s2, s5  @ all = delta/down
+(gdb) step
+44		vadd.f32 s0, s0, s7
+(gdb) step
+45		vadd.f32 s4, s4, s1
+(gdb) step
+46		subs r6, #1  @i--
+(gdb) step
+47		bge .loop
+(gdb) info float 
+fpscr          0x10	16
+s0             0.304232776	(raw 0x3e9bc466)
+s1             1	(raw 0x3f800000)
+s2             0.03125	(raw 0x3d000000)
+s3             0.0791015625	(raw 0x3da20000)
+s4             10	(raw 0x41200000)
+s5             1.07910156	(raw 0x3f8a2000)
+s6             32	(raw 0x42000000)
+s7             0.0289592762	(raw 0x3ced3c01)
+s8             4	(raw 0x40800000)
+s9             0	(raw 0x00000000)
+s10            0	(raw 0x00000000)
+s11            0	(raw 0x00000000)
+s12            0	(raw 0x00000000)
+s13            0	(raw 0x00000000)
+s14            0	(raw 0x00000000)
+s15            0	(raw 0x00000000)
+s16            0	(raw 0x00000000)
+s17            0	(raw 0x00000000)
+s18            0	(raw 0x00000000)
+s19            0	(raw 0x00000000)
+s20            0	(raw 0x00000000)
+s21            0	(raw 0x00000000)
+---Type <return> to continue, or q <return> to quit---
+s22            0	(raw 0x00000000)
+s23            0	(raw 0x00000000)
+s24            0	(raw 0x00000000)
+s25            0	(raw 0x00000000)
+s26            0	(raw 0x00000000)
+s27            0	(raw 0x00000000)
+s28            0	(raw 0x00000000)
+s29            0	(raw 0x00000000)
+s30            0	(raw 0x00000000)
+s31            0	(raw 0x00000000)
+(gdb) info registers 
+r0             0x20	32
+r1             0x1	1
+r2             0x0	0
+r3             0x1	1
+r4             0x0	0
+r5             0x4	4
+r6             0x16	22
+r7             0x0	0
+r8             0x0	0
+r9             0x0	0
+r10            0x76fff000	1996484608
+r11            0x0	0
+r12            0x0	0
+sp             0x7efff4c0	0x7efff4c0
+lr             0x83e4	33764
+pc             0x846c	0x846c <fibonacci+92>
+cpsr           0x20000010	536870928
+(gdb) step
+40		vdiv.f32 s3, s4, s6  @ float x = (float)i/dt 
+(gdb) step
+41		vmul.f32 s3, s3, s3  @ x = x * x
+(gdb) step
+42		vadd.f32 s5, s1, s3  @ down = 1.0 + x * x
+(gdb) step
+43		vdiv.f32 s7, s2, s5  @ all = delta/down
+(gdb) step
+44		vadd.f32 s0, s0, s7
+(gdb) step
+45		vadd.f32 s4, s4, s1
+(gdb) step
+46		subs r6, #1  @i--
+(gdb) step
+47		bge .loop
+(gdb) step
+40		vdiv.f32 s3, s4, s6  @ float x = (float)i/dt 
+(gdb) step
+41		vmul.f32 s3, s3, s3  @ x = x * x
+(gdb) step
+42		vadd.f32 s5, s1, s3  @ down = 1.0 + x * x
+(gdb) step
+43		vdiv.f32 s7, s2, s5  @ all = delta/down
+(gdb) step
+44		vadd.f32 s0, s0, s7
+(gdb) step
+45		vadd.f32 s4, s4, s1
+(gdb) step
+46		subs r6, #1  @i--
+(gdb) step
+47		bge .loop
+(gdb) step
+40		vdiv.f32 s3, s4, s6  @ float x = (float)i/dt 
+(gdb) step
+41		vmul.f32 s3, s3, s3  @ x = x * x
+(gdb) step
+42		vadd.f32 s5, s1, s3  @ down = 1.0 + x * x
+(gdb) step
+43		vdiv.f32 s7, s2, s5  @ all = delta/down
+(gdb) step
+44		vadd.f32 s0, s0, s7
+(gdb) step
+45		vadd.f32 s4, s4, s1
+(gdb) step
+46		subs r6, #1  @i--
+(gdb) step
+47		bge .loop
+(gdb) step
+40		vdiv.f32 s3, s4, s6  @ float x = (float)i/dt 
+(gdb) step
+41		vmul.f32 s3, s3, s3  @ x = x * x
+(gdb) step
+42		vadd.f32 s5, s1, s3  @ down = 1.0 + x * x
+(gdb) step
+43		vdiv.f32 s7, s2, s5  @ all = delta/down
+(gdb) step
+44		vadd.f32 s0, s0, s7
+(gdb) step
+45		vadd.f32 s4, s4, s1
+(gdb) step
+46		subs r6, #1  @i--
+(gdb) step
+47		bge .loop
+(gdb) step
+40		vdiv.f32 s3, s4, s6  @ float x = (float)i/dt 
+(gdb) step
+41		vmul.f32 s3, s3, s3  @ x = x * x
+(gdb) step
+42		vadd.f32 s5, s1, s3  @ down = 1.0 + x * x
+(gdb) step
+43		vdiv.f32 s7, s2, s5  @ all = delta/down
+(gdb) step
+44		vadd.f32 s0, s0, s7
+(gdb) step
+45		vadd.f32 s4, s4, s1
+(gdb) step
+46		subs r6, #1  @i--
+(gdb) step
+47		bge .loop
+(gdb) step
+40		vdiv.f32 s3, s4, s6  @ float x = (float)i/dt 
+(gdb) step
+41		vmul.f32 s3, s3, s3  @ x = x * x
+(gdb) step
+42		vadd.f32 s5, s1, s3  @ down = 1.0 + x * x
+(gdb) info registers 
+r0             0x20	32
+r1             0x1	1
+r2             0x0	0
+r3             0x1	1
+r4             0x0	0
+r5             0x4	4
+r6             0x11	17
+r7             0x0	0
+r8             0x0	0
+r9             0x0	0
+r10            0x76fff000	1996484608
+r11            0x0	0
+r12            0x0	0
+sp             0x7efff4c0	0x7efff4c0
+lr             0x83e4	33764
+pc             0x8458	0x8458 <fibonacci+72>
+cpsr           0x20000010	536870928
+(gdb) step
+43		vdiv.f32 s7, s2, s5  @ all = delta/down
+(gdb) step
+44		vadd.f32 s0, s0, s7
+(gdb) step
+45		vadd.f32 s4, s4, s1
+(gdb) step
+46		subs r6, #1  @i--
+(gdb) step
+47		bge .loop
+(gdb) step
+40		vdiv.f32 s3, s4, s6  @ float x = (float)i/dt 
+(gdb) step
+41		vmul.f32 s3, s3, s3  @ x = x * x
+(gdb) step
+42		vadd.f32 s5, s1, s3  @ down = 1.0 + x * x
+(gdb) step
+43		vdiv.f32 s7, s2, s5  @ all = delta/down
+(gdb) step
+44		vadd.f32 s0, s0, s7
+(gdb) step
+45		vadd.f32 s4, s4, s1
+(gdb) step
+46		subs r6, #1  @i--
+(gdb) step
+47		bge .loop
+(gdb) step
+40		vdiv.f32 s3, s4, s6  @ float x = (float)i/dt 
+(gdb) step
+41		vmul.f32 s3, s3, s3  @ x = x * x
+(gdb) step
+42		vadd.f32 s5, s1, s3  @ down = 1.0 + x * x
+(gdb) step
+43		vdiv.f32 s7, s2, s5  @ all = delta/down
+(gdb) step
+44		vadd.f32 s0, s0, s7
+(gdb) step
+45		vadd.f32 s4, s4, s1
+(gdb) step
+46		subs r6, #1  @i--
+(gdb) step
+47		bge .loop
+(gdb) step
+40		vdiv.f32 s3, s4, s6  @ float x = (float)i/dt 
+(gdb) step
+41		vmul.f32 s3, s3, s3  @ x = x * x
+(gdb) step
+42		vadd.f32 s5, s1, s3  @ down = 1.0 + x * x
+(gdb) step
+43		vdiv.f32 s7, s2, s5  @ all = delta/down
+(gdb) step
+44		vadd.f32 s0, s0, s7
+(gdb) step
+45		vadd.f32 s4, s4, s1
+(gdb) step
+46		subs r6, #1  @i--
+(gdb) step
+47		bge .loop
+(gdb) step
+40		vdiv.f32 s3, s4, s6  @ float x = (float)i/dt 
+(gdb) step
+41		vmul.f32 s3, s3, s3  @ x = x * x
+(gdb) step
+42		vadd.f32 s5, s1, s3  @ down = 1.0 + x * x
+(gdb) step
+43		vdiv.f32 s7, s2, s5  @ all = delta/down
+(gdb) step
+44		vadd.f32 s0, s0, s7
+(gdb) step
+45		vadd.f32 s4, s4, s1
+(gdb) step
+46		subs r6, #1  @i--
+(gdb) step
+47		bge .loop
+(gdb) step
+40		vdiv.f32 s3, s4, s6  @ float x = (float)i/dt 
+(gdb) step
+41		vmul.f32 s3, s3, s3  @ x = x * x
+(gdb) step
+42		vadd.f32 s5, s1, s3  @ down = 1.0 + x * x
+(gdb) step
+43		vdiv.f32 s7, s2, s5  @ all = delta/down
+(gdb) step
+44		vadd.f32 s0, s0, s7
+(gdb) step
+45		vadd.f32 s4, s4, s1
+(gdb) step
+46		subs r6, #1  @i--
+(gdb) step
+47		bge .loop
+(gdb) info registers 
+r0             0x20	32
+r1             0x1	1
+r2             0x0	0
+r3             0x1	1
+r4             0x0	0
+r5             0x4	4
+r6             0xb	11
+r7             0x0	0
+r8             0x0	0
+r9             0x0	0
+r10            0x76fff000	1996484608
+r11            0x0	0
+r12            0x0	0
+sp             0x7efff4c0	0x7efff4c0
+lr             0x83e4	33764
+pc             0x846c	0x846c <fibonacci+92>
+cpsr           0x20000010	536870928
+(gdb) info float 
+fpscr          0x10	16
+s0             0.585407615	(raw 0x3f15dd46)
+s1             1	(raw 0x3f800000)
+s2             0.03125	(raw 0x3d000000)
+s3             0.390625	(raw 0x3ec80000)
+s4             21	(raw 0x41a80000)
+s5             1.390625	(raw 0x3fb20000)
+s6             32	(raw 0x42000000)
+s7             0.0224719103	(raw 0x3cb81703)
+s8             4	(raw 0x40800000)
+s9             0	(raw 0x00000000)
+s10            0	(raw 0x00000000)
+s11            0	(raw 0x00000000)
+s12            0	(raw 0x00000000)
+s13            0	(raw 0x00000000)
+s14            0	(raw 0x00000000)
+s15            0	(raw 0x00000000)
+s16            0	(raw 0x00000000)
+s17            0	(raw 0x00000000)
+s18            0	(raw 0x00000000)
+s19            0	(raw 0x00000000)
+s20            0	(raw 0x00000000)
+s21            0	(raw 0x00000000)
+---Type <return> to continue, or q <return> to quit---info float 
+s22            0	(raw 0x00000000)
+s23            0	(raw 0x00000000)
+s24            0	(raw 0x00000000)
+s25            0	(raw 0x00000000)
+s26            0	(raw 0x00000000)
+s27            0	(raw 0x00000000)
+s28            0	(raw 0x00000000)
+s29            0	(raw 0x00000000)
+s30            0	(raw 0x00000000)
+s31            0	(raw 0x00000000)
+(gdb) step
+40		vdiv.f32 s3, s4, s6  @ float x = (float)i/dt 
+(gdb) step
+41		vmul.f32 s3, s3, s3  @ x = x * x
+(gdb) step
+42		vadd.f32 s5, s1, s3  @ down = 1.0 + x * x
+(gdb) step
+43		vdiv.f32 s7, s2, s5  @ all = delta/down
+(gdb) step
+44		vadd.f32 s0, s0, s7
+(gdb) step
+45		vadd.f32 s4, s4, s1
+(gdb) step
+46		subs r6, #1  @i--
+(gdb) step
+47		bge .loop
+(gdb) step
+40		vdiv.f32 s3, s4, s6  @ float x = (float)i/dt 
+(gdb) step
+41		vmul.f32 s3, s3, s3  @ x = x * x
+(gdb) step
+42		vadd.f32 s5, s1, s3  @ down = 1.0 + x * x
+(gdb) step
+43		vdiv.f32 s7, s2, s5  @ all = delta/down
+(gdb) step
+44		vadd.f32 s0, s0, s7
+(gdb) step
+45		vadd.f32 s4, s4, s1
+(gdb) step
+46		subs r6, #1  @i--
+(gdb) step
+47		bge .loop
+(gdb) info registers 
+r0             0x20	32
+r1             0x1	1
+r2             0x0	0
+r3             0x1	1
+r4             0x0	0
+r5             0x4	4
+r6             0x9	9
+r7             0x0	0
+r8             0x0	0
+r9             0x0	0
+r10            0x76fff000	1996484608
+r11            0x0	0
+r12            0x0	0
+sp             0x7efff4c0	0x7efff4c0
+lr             0x83e4	33764
+pc             0x846c	0x846c <fibonacci+92>
+cpsr           0x20000010	536870928
+(gdb) step
+40		vdiv.f32 s3, s4, s6  @ float x = (float)i/dt 
+(gdb) step
+41		vmul.f32 s3, s3, s3  @ x = x * x
+(gdb) step
+42		vadd.f32 s5, s1, s3  @ down = 1.0 + x * x
+(gdb) step
+43		vdiv.f32 s7, s2, s5  @ all = delta/down
+(gdb) step
+44		vadd.f32 s0, s0, s7
+(gdb) step
+45		vadd.f32 s4, s4, s1
+(gdb) step
+46		subs r6, #1  @i--
+(gdb) step
+47		bge .loop
+(gdb) info registers 
+r0             0x20	32
+r1             0x1	1
+r2             0x0	0
+r3             0x1	1
+r4             0x0	0
+r5             0x4	4
+r6             0x8	8
+r7             0x0	0
+r8             0x0	0
+r9             0x0	0
+r10            0x76fff000	1996484608
+r11            0x0	0
+r12            0x0	0
+sp             0x7efff4c0	0x7efff4c0
+lr             0x83e4	33764
+pc             0x846c	0x846c <fibonacci+92>
+cpsr           0x20000010	536870928
+(gdb) step
+40		vdiv.f32 s3, s4, s6  @ float x = (float)i/dt 
+(gdb) step
+41		vmul.f32 s3, s3, s3  @ x = x * x
+(gdb) step
+42		vadd.f32 s5, s1, s3  @ down = 1.0 + x * x
+(gdb) step
+43		vdiv.f32 s7, s2, s5  @ all = delta/down
+(gdb) step
+44		vadd.f32 s0, s0, s7
+(gdb) step
+45		vadd.f32 s4, s4, s1
+(gdb) step
+46		subs r6, #1  @i--
+(gdb) step
+47		bge .loop
+(gdb) step
+40		vdiv.f32 s3, s4, s6  @ float x = (float)i/dt 
+(gdb) step
+41		vmul.f32 s3, s3, s3  @ x = x * x
+(gdb) step
+42		vadd.f32 s5, s1, s3  @ down = 1.0 + x * x
+(gdb) step
+43		vdiv.f32 s7, s2, s5  @ all = delta/down
+(gdb) step
+44		vadd.f32 s0, s0, s7
+(gdb) step
+45		vadd.f32 s4, s4, s1
+(gdb) step
+46		subs r6, #1  @i--
+(gdb) step
+47		bge .loop
+(gdb) step
+40		vdiv.f32 s3, s4, s6  @ float x = (float)i/dt 
+(gdb) step
+41		vmul.f32 s3, s3, s3  @ x = x * x
+(gdb) step
+42		vadd.f32 s5, s1, s3  @ down = 1.0 + x * x
+(gdb) step
+43		vdiv.f32 s7, s2, s5  @ all = delta/down
+(gdb) step
+44		vadd.f32 s0, s0, s7
+(gdb) step
+45		vadd.f32 s4, s4, s1
+(gdb) step
+46		subs r6, #1  @i--
+(gdb) step
+47		bge .loop
+(gdb) step
+40		vdiv.f32 s3, s4, s6  @ float x = (float)i/dt 
+(gdb) step
+41		vmul.f32 s3, s3, s3  @ x = x * x
+(gdb) step
+42		vadd.f32 s5, s1, s3  @ down = 1.0 + x * x
+(gdb) step
+43		vdiv.f32 s7, s2, s5  @ all = delta/down
+(gdb) step
+44		vadd.f32 s0, s0, s7
+(gdb) step
+45		vadd.f32 s4, s4, s1
+(gdb) step
+46		subs r6, #1  @i--
+(gdb) step
+47		bge .loop
+(gdb) step
+40		vdiv.f32 s3, s4, s6  @ float x = (float)i/dt 
+(gdb) step
+41		vmul.f32 s3, s3, s3  @ x = x * x
+(gdb) step
+42		vadd.f32 s5, s1, s3  @ down = 1.0 + x * x
+(gdb) step
+43		vdiv.f32 s7, s2, s5  @ all = delta/down
+(gdb) step
+44		vadd.f32 s0, s0, s7
+(gdb) step
+45		vadd.f32 s4, s4, s1
+(gdb) step
+46		subs r6, #1  @i--
+(gdb) step
+47		bge .loop
+(gdb) info registers 
+r0             0x20	32
+r1             0x1	1
+r2             0x0	0
+r3             0x1	1
+r4             0x0	0
+r5             0x4	4
+r6             0x3	3
+r7             0x0	0
+r8             0x0	0
+r9             0x0	0
+r10            0x76fff000	1996484608
+r11            0x0	0
+r12            0x0	0
+sp             0x7efff4c0	0x7efff4c0
+lr             0x83e4	33764
+pc             0x846c	0x846c <fibonacci+92>
+cpsr           0x20000010	536870928
+(gdb) info float 
+fpscr          0x10	16
+s0             0.743258774	(raw 0x3f3e4635)
+s1             1	(raw 0x3f800000)
+s2             0.03125	(raw 0x3d000000)
+s3             0.765625	(raw 0x3f440000)
+s4             29	(raw 0x41e80000)
+s5             1.765625	(raw 0x3fe20000)
+s6             32	(raw 0x42000000)
+s7             0.017699115	(raw 0x3c90fdbc)
+s8             4	(raw 0x40800000)
+s9             0	(raw 0x00000000)
+s10            0	(raw 0x00000000)
+s11            0	(raw 0x00000000)
+s12            0	(raw 0x00000000)
+s13            0	(raw 0x00000000)
+s14            0	(raw 0x00000000)
+s15            0	(raw 0x00000000)
+s16            0	(raw 0x00000000)
+s17            0	(raw 0x00000000)
+s18            0	(raw 0x00000000)
+s19            0	(raw 0x00000000)
+s20            0	(raw 0x00000000)
+s21            0	(raw 0x00000000)
+---Type <return> to continue, or q <return> to quit---
+s22            0	(raw 0x00000000)
+s23            0	(raw 0x00000000)
+s24            0	(raw 0x00000000)
+s25            0	(raw 0x00000000)
+s26            0	(raw 0x00000000)
+s27            0	(raw 0x00000000)
+s28            0	(raw 0x00000000)
+s29            0	(raw 0x00000000)
+s30            0	(raw 0x00000000)
+s31            0	(raw 0x00000000)
+(gdb) step
+40		vdiv.f32 s3, s4, s6  @ float x = (float)i/dt 
+(gdb) step
+41		vmul.f32 s3, s3, s3  @ x = x * x
+(gdb) step
+42		vadd.f32 s5, s1, s3  @ down = 1.0 + x * x
+(gdb) step
+43		vdiv.f32 s7, s2, s5  @ all = delta/down
+(gdb) step
+44		vadd.f32 s0, s0, s7
+(gdb) step
+45		vadd.f32 s4, s4, s1
+(gdb) step
+46		subs r6, #1  @i--
+(gdb) step
+47		bge .loop
+(gdb) step
+40		vdiv.f32 s3, s4, s6  @ float x = (float)i/dt 
+(gdb) info registers 
+r0             0x20	32
+r1             0x1	1
+r2             0x0	0
+r3             0x1	1
+r4             0x0	0
+r5             0x4	4
+r6             0x2	2
+r7             0x0	0
+r8             0x0	0
+r9             0x0	0
+r10            0x76fff000	1996484608
+r11            0x0	0
+r12            0x0	0
+sp             0x7efff4c0	0x7efff4c0
+lr             0x83e4	33764
+pc             0x8450	0x8450 <fibonacci+64>
+cpsr           0x20000010	536870928
+(gdb) info float 
+fpscr          0x10	16
+s0             0.760416925	(raw 0x3f42aaaf)
+s1             1	(raw 0x3f800000)
+s2             0.03125	(raw 0x3d000000)
+s3             0.821289062	(raw 0x3f524000)
+s4             30	(raw 0x41f00000)
+s5             1.82128906	(raw 0x3fe92000)
+s6             32	(raw 0x42000000)
+s7             0.0171581767	(raw 0x3c8c8f4e)
+s8             4	(raw 0x40800000)
+s9             0	(raw 0x00000000)
+s10            0	(raw 0x00000000)
+s11            0	(raw 0x00000000)
+s12            0	(raw 0x00000000)
+s13            0	(raw 0x00000000)
+s14            0	(raw 0x00000000)
+s15            0	(raw 0x00000000)
+s16            0	(raw 0x00000000)
+s17            0	(raw 0x00000000)
+s18            0	(raw 0x00000000)
+s19            0	(raw 0x00000000)
+s20            0	(raw 0x00000000)
+s21            0	(raw 0x00000000)
+---Type <return> to continue, or q <return> to quit---info float 
+s22            0	(raw 0x00000000)
+s23            0	(raw 0x00000000)
+s24            0	(raw 0x00000000)
+s25            0	(raw 0x00000000)
+s26            0	(raw 0x00000000)
+s27            0	(raw 0x00000000)
+s28            0	(raw 0x00000000)
+s29            0	(raw 0x00000000)
+s30            0	(raw 0x00000000)
+s31            0	(raw 0x00000000)
+(gdb) step
+41		vmul.f32 s3, s3, s3  @ x = x * x
+(gdb) step
+42		vadd.f32 s5, s1, s3  @ down = 1.0 + x * x
+(gdb) step
+43		vdiv.f32 s7, s2, s5  @ all = delta/down
+(gdb) step
+44		vadd.f32 s0, s0, s7
+(gdb) step
+45		vadd.f32 s4, s4, s1
+(gdb) step
+46		subs r6, #1  @i--
+(gdb) step
+47		bge .loop
+(gdb) step
+40		vdiv.f32 s3, s4, s6  @ float x = (float)i/dt 
+(gdb) step
+41		vmul.f32 s3, s3, s3  @ x = x * x
+(gdb) step
+42		vadd.f32 s5, s1, s3  @ down = 1.0 + x * x
+(gdb) step
+43		vdiv.f32 s7, s2, s5  @ all = delta/down
+(gdb) step
+44		vadd.f32 s0, s0, s7
+(gdb) info float 
+fpscr          0x10	16
+s0             0.777048945	(raw 0x3f46ecae)
+s1             1	(raw 0x3f800000)
+s2             0.03125	(raw 0x3d000000)
+s3             0.938476562	(raw 0x3f704000)
+s4             31	(raw 0x41f80000)
+s5             1.93847656	(raw 0x3ff82000)
+s6             32	(raw 0x42000000)
+s7             0.0161209069	(raw 0x3c840ffe)
+s8             4	(raw 0x40800000)
+s9             0	(raw 0x00000000)
+s10            0	(raw 0x00000000)
+s11            0	(raw 0x00000000)
+s12            0	(raw 0x00000000)
+s13            0	(raw 0x00000000)
+s14            0	(raw 0x00000000)
+s15            0	(raw 0x00000000)
+s16            0	(raw 0x00000000)
+s17            0	(raw 0x00000000)
+s18            0	(raw 0x00000000)
+s19            0	(raw 0x00000000)
+s20            0	(raw 0x00000000)
+s21            0	(raw 0x00000000)
+---Type <return> to continue, or q <return> to quit---
+s22            0	(raw 0x00000000)
+s23            0	(raw 0x00000000)
+s24            0	(raw 0x00000000)
+s25            0	(raw 0x00000000)
+s26            0	(raw 0x00000000)
+s27            0	(raw 0x00000000)
+s28            0	(raw 0x00000000)
+s29            0	(raw 0x00000000)
+s30            0	(raw 0x00000000)
+s31            0	(raw 0x00000000)
+(gdb) info registers 
+r0             0x20	32
+r1             0x1	1
+r2             0x0	0
+r3             0x1	1
+r4             0x0	0
+r5             0x4	4
+r6             0x1	1
+r7             0x0	0
+r8             0x0	0
+r9             0x0	0
+r10            0x76fff000	1996484608
+r11            0x0	0
+r12            0x0	0
+sp             0x7efff4c0	0x7efff4c0
+lr             0x83e4	33764
+pc             0x8460	0x8460 <fibonacci+80>
+cpsr           0x20000010	536870928
+(gdb) step
+45		vadd.f32 s4, s4, s1
+(gdb) ste[
+Ambiguous command "ste[": .
+(gdb) step
+46		subs r6, #1  @i--
+(gdb) step
+47		bge .loop
+(gdb) step
+40		vdiv.f32 s3, s4, s6  @ float x = (float)i/dt 
+(gdb) step
+41		vmul.f32 s3, s3, s3  @ x = x * x
+(gdb) step
+42		vadd.f32 s5, s1, s3  @ down = 1.0 + x * x
+(gdb) step
+43		vdiv.f32 s7, s2, s5  @ all = delta/down
+(gdb) step
+44		vadd.f32 s0, s0, s7
+(gdb) step
+45		vadd.f32 s4, s4, s1
+(gdb) step
+46		subs r6, #1  @i--
+(gdb) step
+47		bge .loop
+(gdb) info registers 
+r0             0x20	32
+r1             0x1	1
+r2             0x0	0
+r3             0x1	1
+r4             0x0	0
+r5             0x4	4
+r6             0xffffffff	4294967295
+r7             0x0	0
+r8             0x0	0
+r9             0x0	0
+r10            0x76fff000	1996484608
+r11            0x0	0
+r12            0x0	0
+sp             0x7efff4c0	0x7efff4c0
+lr             0x83e4	33764
+pc             0x846c	0x846c <fibonacci+92>
+cpsr           0x80000010	-2147483632
+(gdb) info float 
+fpscr          0x10	16
+s0             0.808794856	(raw 0x3f4f0d2e)
+s1             1	(raw 0x3f800000)
+s2             0.03125	(raw 0x3d000000)
+s3             1	(raw 0x3f800000)
+s4             33	(raw 0x42040000)
+s5             2	(raw 0x40000000)
+s6             32	(raw 0x42000000)
+s7             0.015625	(raw 0x3c800000)
+s8             4	(raw 0x40800000)
+s9             0	(raw 0x00000000)
+s10            0	(raw 0x00000000)
+s11            0	(raw 0x00000000)
+s12            0	(raw 0x00000000)
+s13            0	(raw 0x00000000)
+s14            0	(raw 0x00000000)
+s15            0	(raw 0x00000000)
+s16            0	(raw 0x00000000)
+s17            0	(raw 0x00000000)
+s18            0	(raw 0x00000000)
+s19            0	(raw 0x00000000)
+s20            0	(raw 0x00000000)
+s21            0	(raw 0x00000000)
+---Type <return> to continue, or q <return> to quit--- 
+s22            0	(raw 0x00000000)
+s23            0	(raw 0x00000000)
+s24            0	(raw 0x00000000)
+s25            0	(raw 0x00000000)
+s26            0	(raw 0x00000000)
+s27            0	(raw 0x00000000)
+s28            0	(raw 0x00000000)
+s29            0	(raw 0x00000000)
+s30            0	(raw 0x00000000)
+s31            0	(raw 0x00000000)
+(gdb) info registers 
+r0             0x20	32
+r1             0x1	1
+r2             0x0	0
+r3             0x1	1
+r4             0x0	0
+r5             0x4	4
+r6             0xffffffff	4294967295
+r7             0x0	0
+r8             0x0	0
+r9             0x0	0
+r10            0x76fff000	1996484608
+r11            0x0	0
+r12            0x0	0
+sp             0x7efff4c0	0x7efff4c0
+lr             0x83e4	33764
+pc             0x846c	0x846c <fibonacci+92>
+cpsr           0x80000010	-2147483632
+(gdb) step
+49		vmul.f32 s8, s8, s0
+(gdb) step
+50		vmov r0, s8
+(gdb) info registers 
+r0             0x20	32
+r1             0x1	1
+r2             0x0	0
+r3             0x1	1
+r4             0x0	0
+r5             0x4	4
+r6             0xffffffff	4294967295
+r7             0x0	0
+r8             0x0	0
+r9             0x0	0
+r10            0x76fff000	1996484608
+r11            0x0	0
+r12            0x0	0
+sp             0x7efff4c0	0x7efff4c0
+lr             0x83e4	33764
+pc             0x8474	0x8474 <fibonacci+100>
+cpsr           0x80000010	-2147483632
+(gdb) info float 
+fpscr          0x10	16
+s0             0.808794856	(raw 0x3f4f0d2e)
+s1             1	(raw 0x3f800000)
+s2             0.03125	(raw 0x3d000000)
+s3             1	(raw 0x3f800000)
+s4             33	(raw 0x42040000)
+s5             2	(raw 0x40000000)
+s6             32	(raw 0x42000000)
+s7             0.015625	(raw 0x3c800000)
+s8             3.23517942	(raw 0x404f0d2e)
+s9             0	(raw 0x00000000)
+s10            0	(raw 0x00000000)
+s11            0	(raw 0x00000000)
+s12            0	(raw 0x00000000)
+s13            0	(raw 0x00000000)
+s14            0	(raw 0x00000000)
+s15            0	(raw 0x00000000)
+s16            0	(raw 0x00000000)
+s17            0	(raw 0x00000000)
+s18            0	(raw 0x00000000)
+s19            0	(raw 0x00000000)
+s20            0	(raw 0x00000000)
+s21            0	(raw 0x00000000)
+---Type <return> to continue, or q <return> to quit---
+s22            0	(raw 0x00000000)
+s23            0	(raw 0x00000000)
+s24            0	(raw 0x00000000)
+s25            0	(raw 0x00000000)
+s26            0	(raw 0x00000000)
+s27            0	(raw 0x00000000)
+s28            0	(raw 0x00000000)
+s29            0	(raw 0x00000000)
+s30            0	(raw 0x00000000)
+s31            0	(raw 0x00000000)
+(gdb) info registers 
+r0             0x20	32
+r1             0x1	1
+r2             0x0	0
+r3             0x1	1
+r4             0x0	0
+r5             0x4	4
+r6             0xffffffff	4294967295
+r7             0x0	0
+r8             0x0	0
+r9             0x0	0
+r10            0x76fff000	1996484608
+r11            0x0	0
+r12            0x0	0
+sp             0x7efff4c0	0x7efff4c0
+lr             0x83e4	33764
+pc             0x8474	0x8474 <fibonacci+100>
+cpsr           0x80000010	-2147483632
+(gdb) step
+52		pop {r4, r5, r6, pc}		@EPILOG
+(gdb) info registers 
+r0             0x404f0d2e	1078922542
+r1             0x1	1
+r2             0x0	0
+r3             0x1	1
+r4             0x0	0
+r5             0x4	4
+r6             0xffffffff	4294967295
+r7             0x0	0
+r8             0x0	0
+r9             0x0	0
+r10            0x76fff000	1996484608
+r11            0x0	0
+r12            0x0	0
+sp             0x7efff4c0	0x7efff4c0
+lr             0x83e4	33764
+pc             0x8478	0x8478 <fibonacci+104>
+cpsr           0x80000010	-2147483632
+(gdb) step
+main (argc=<optimized out>, argv=<optimized out>) at fibseq.c:11
+11	  printf("The fibonacci sequence at %d is: %f\n", number, result);
+(gdb) info registers 
+r0             0x404f0d2e	1078922542
+r1             0x1	1
+r2             0x0	0
+r3             0x1	1
+r4             0x0	0
+r5             0x0	0
+r6             0x8320	33568
+r7             0x0	0
+r8             0x0	0
+r9             0x0	0
+r10            0x76fff000	1996484608
+r11            0x0	0
+r12            0x0	0
+sp             0x7efff4d0	0x7efff4d0
+lr             0x83e4	33764
+pc             0x83e4	0x83e4 <main+24>
+cpsr           0x80000010	-2147483632
+(gdb) step
+The fibonacci sequence at 32 is: 0.808795
+13	}
+(gdb) 
+

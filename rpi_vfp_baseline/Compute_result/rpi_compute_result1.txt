@@ -1,0 +1,12 @@
+Method 1 Input number = 1000 Compute pi = 3.140593 time is 0.000000
+Method 1 Input number = 2000 Compute pi = 3.141090 time is 0.000000
+Method 1 Input number = 4000 Compute pi = 3.141345 time is 0.000000
+Method 1 Input number = 8000 Compute pi = 3.141472 time is 0.000000
+Method 1 Input number = 16000 Compute pi = 3.141536 time is 0.000000
+Method 1 Input number = 32000 Compute pi = 3.141567 time is 0.000000
+Method 1 Input number = 64000 Compute pi = 3.141580 time is 0.000000
+Method 1 Input number = 128000 Compute pi = 3.141588 time is 0.010000
+Method 1 Input number = 256000 Compute pi = 3.141592 time is 0.020000
+Method 1 Input number = 512000 Compute pi = 3.141594 time is 0.030000
+Method 1 Input number = 1024000 Compute pi = 3.141595 time is 0.070000
+Method 1 Input number = 2048000 Compute pi = 3.141596 time is 0.140000
